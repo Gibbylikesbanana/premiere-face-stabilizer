@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Face Stabilizer</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Face Stabilizer</h1>
+        <p id="status" role="status">Select a video clip to begin.</p>
+      </header>
+
+      <section class="card">
+        <button id="select-face" type="button" disabled>Select face</button>
+        <div id="selection" class="selection" aria-live="polite">
+          No face selected
+        </div>
+      </section>
+
+      <section class="card controls">
+        <label>
+          Smoothing
+          <input id="smoothing" type="range" min="0" max="1" value="0.8" step="0.05" />
+          <output id="smoothing-value">0.80</output>
+        </label>
+        <label class="checkbox">
+          <input id="apply-rotation" type="checkbox" checked />
+          Apply rotation
+        </label>
+      </section>
+
+      <button id="track" class="primary" type="button" disabled>Track face</button>
+      <button id="apply" type="button" disabled>Apply stabilization</button>
+    </main>
+    <script type="module" src="src/panel.js"></script>
+  </body>
+</html>

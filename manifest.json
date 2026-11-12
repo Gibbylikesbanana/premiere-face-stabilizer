@@ -1,0 +1,24 @@
+{
+  "manifestVersion": 5,
+  "id": "com.gibbylikesbanana.face-stabilizer",
+  "name": "Face Stabilizer",
+  "version": "0.1.0",
+  "main": "index.html",
+  "host": [
+    {
+      "app": "PPRO",
+      "minVersion": "26.0.0"
+    }
+  ],
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "face-stabilizer-panel",
+      "label": "Face Stabilizer",
+      "minimumSize": {
+        "width": 320,
+        "height": 420
+      }
+    }
+  ]
+}

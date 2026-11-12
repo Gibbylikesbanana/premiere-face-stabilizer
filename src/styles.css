@@ -1,0 +1,77 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  background: #1e1e1e;
+  color: #f2f2f2;
+}
+
+body {
+  margin: 0;
+  min-width: 280px;
+}
+
+main {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+h1 {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+p {
+  color: #b6b6b6;
+  font-size: 12px;
+  margin: 0;
+}
+
+.card {
+  background: #2a2a2a;
+  border: 1px solid #3b3b3b;
+  border-radius: 6px;
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+}
+
+button {
+  background: #3a3a3a;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  min-height: 32px;
+  padding: 6px 10px;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+button.primary {
+  background: #1473e6;
+  border-color: #1473e6;
+}
+
+label {
+  display: grid;
+  font-size: 12px;
+  gap: 6px;
+}
+
+label.checkbox {
+  align-items: center;
+  display: flex;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.selection {
+  color: #b6b6b6;
+  font-size: 12px;
+}
