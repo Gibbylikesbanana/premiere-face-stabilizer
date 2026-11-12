@@ -39,6 +39,31 @@ isolated in `src/premiere-adapter.js`.
 `npm run dev` rebuilds `dist/` when source files change. UXP Developer Tool
 loads `dist/manifest.json`, not `public/manifest.json`.
 
+## Install without UXP Developer Tool
+
+You can create a Creative Cloud package from Terminal:
+
+```sh
+cd /path/to/premiere-face-stabilizer
+npm install
+npm run package
+```
+
+This creates:
+
+```text
+release/face-stabilizer.ccx
+```
+
+Double-click `release/face-stabilizer.ccx` in Finder and allow Creative Cloud
+to install it. Restart Premiere Pro, then open **Window > UXP Plugins > Face
+Stabilizer**.
+
+This avoids UXP Developer Tool, but it does not bypass Adobe's installer or
+Premiere's security checks. If Creative Cloud refuses the unsigned package,
+the plugin must be signed/distributed through Adobe, or loaded in development
+mode with UXP Developer Tool.
+
 ### Troubleshooting
 
 - **`npm: command not found`**: install Node.js LTS, close Terminal, open a
@@ -69,7 +94,8 @@ smoothing code.
 ## Project layout
 
 - `public/manifest.json` - source UXP panel manifest.
-- `dist/manifest.json` - generated manifest loaded by UXP Developer Tool.
+- `dist/manifest.json` - generated manifest used for packaging.
+- `release/face-stabilizer.ccx` - generated install package.
 - `index.html`, `src/panel.js`, `src/styles.css` - panel UI.
 - `src/smoothing.js` - deterministic transform smoothing utilities.
 - `src/tracker.js` - tracker interface and selection validation.
