@@ -5,10 +5,29 @@ frame, track it through a clip, and apply smoothed transform keyframes.
 
 ## Status
 
-This repository contains the UI and tracking pipeline skeleton. The
-Premiere-specific frame access and transform-keyframe adapter are intentionally
-isolated in `src/premiere-adapter.js`; that is the next integration point for
-the installed Premiere Pro 26 SDK/API.
+This repository contains the UI and tracking pipeline skeleton. The adapter
+already validates the active project, sequence, and single selected video
+clip. Premiere-specific frame access and transform-keyframe application are
+isolated in `src/premiere-adapter.js`.
+
+## Local setup on macOS
+
+1. Install Premiere Pro 26 and the UXP Developer Tool from Creative Cloud.
+2. In Premiere Pro, enable **Settings > Plugins > Enable developer mode**, then
+   restart Premiere Pro.
+3. Install Node.js 18 or newer.
+4. From this repository, run:
+
+   ```sh
+   npm install
+   npm run dev
+   ```
+
+5. In UXP Developer Tool, add the repository's `dist/manifest.json`, click
+   **Load**, and open the panel from Premiere's **Window > UXP Plugins** menu.
+
+`npm run dev` rebuilds `dist/` when source files change. UXP Developer Tool
+loads `dist/manifest.json`, not the source manifest.
 
 ## MVP workflow
 
