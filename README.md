@@ -16,18 +16,42 @@ isolated in `src/premiere-adapter.js`.
 2. In Premiere Pro, enable **Settings > Plugins > Enable developer mode**, then
    restart Premiere Pro.
 3. Install Node.js 18 or newer.
-4. From this repository, run:
+4. Open **Terminal** and run these commands from the project folder:
 
    ```sh
+   cd /path/to/premiere-face-stabilizer
    npm install
    npm run dev
    ```
 
-5. In UXP Developer Tool, add the repository's `dist/manifest.json`, click
-   **Load**, and open the panel from Premiere's **Window > UXP Plugins** menu.
+   Keep this Terminal window open. The `npm run dev` command continuously
+   rebuilds the plugin.
+
+5. Open UXP Developer Tool, choose **Add plugin**, select:
+
+   ```
+   /path/to/premiere-face-stabilizer/dist/manifest.json
+   ```
+
+   Click **Load**, then open the panel from Premiere's **Window > UXP
+   Plugins > Face Stabilizer** menu.
 
 `npm run dev` rebuilds `dist/` when source files change. UXP Developer Tool
-loads `dist/manifest.json`, not the source manifest.
+loads `dist/manifest.json`, not `public/manifest.json`.
+
+### Troubleshooting
+
+- **`npm: command not found`**: install Node.js LTS, close Terminal, open a
+  new Terminal window, and run `node -v` and `npm -v`.
+- **`dist/manifest.json` does not exist**: run `npm install`, then
+  `npm run build` once. Use the `dist/manifest.json` file, not the repository
+  folder.
+- **The panel is not visible**: confirm developer mode is enabled, restart
+  Premiere Pro, and load the manifest again in UXP Developer Tool.
+- **The panel opens but buttons show errors**: installation succeeded. Face
+  detection and transform-keyframe writing are not implemented yet; the
+  current build only verifies the selected Premiere clip and displays the
+  panel workflow.
 
 ## MVP workflow
 
@@ -44,7 +68,8 @@ smoothing code.
 
 ## Project layout
 
-- `manifest.json` - UXP panel manifest.
+- `public/manifest.json` - source UXP panel manifest.
+- `dist/manifest.json` - generated manifest loaded by UXP Developer Tool.
 - `index.html`, `src/panel.js`, `src/styles.css` - panel UI.
 - `src/smoothing.js` - deterministic transform smoothing utilities.
 - `src/tracker.js` - tracker interface and selection validation.
